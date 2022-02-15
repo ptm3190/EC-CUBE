@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "47b9fd2648ebc1072161bebcd923086b",
+    "content-hash": "c67abdb7d8a216aad0c66f633e6cddbf",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -2302,6 +2302,30 @@
                 "source": "https://github.com/EC-CUBE/eccube-plugin-installer/tree/2.0.1"
             },
             "time": "2021-07-20T01:13:11+00:00"
+        },
+        {
+            "name": "ec-cube/productreview4",
+            "version": "4.1.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://package-api-c2.ec-cube.net/ec-cube/productreview4/4.1.0/ProductReview4-4.1.0.tgz"
+            },
+            "require": {
+                "ec-cube/plugin-installer": "~0.0.6 || ^2.0"
+            },
+            "type": "eccube-plugin",
+            "extra": {
+                "code": "ProductReview4",
+                "id": 1756
+            },
+            "description": "商品レビュー管理プラグイン",
+            "transport-options": {
+                "http": {
+                    "header": [
+                        "X-ECCUBE-KEY: "
+                    ]
+                }
+            }
         },
         {
             "name": "egulias/email-validator",
@@ -13047,7 +13071,7 @@
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "7.3.0"
+        "php": "7.4.27"
     },
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
