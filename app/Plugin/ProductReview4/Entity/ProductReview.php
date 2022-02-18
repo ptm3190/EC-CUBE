@@ -129,7 +129,7 @@ class ProductReview extends AbstractEntity
     /**
      * @var string
      *
-     * @ORM\Column(name="store_reviews", type="text")
+     * @ORM\Column(name="store_reviews", type="text", nullable=true)
      */
     private $store_reviews;
 
@@ -405,19 +405,19 @@ class ProductReview extends AbstractEntity
      *
      * @return \ProductReview
      */
-    public function getStoreReview()
+    public function getStoreReviews()
     {
         return $this->store_reviews;
     }
 
     /**
-     * Set comment.
+     * Set store_reviews.
      *
-     * @param string $comment
+     * @param string $store_reviews
      *
      * @return ProductReview
      */
-    public function setStoreReview($store_reviews)
+    public function setStoreReviews($store_reviews)
     {
         $this->store_reviews = $store_reviews;
 

@@ -210,7 +210,7 @@
             "url": "https://package-api-c2.ec-cube.net",
             "options": {
                 "http": {
-                    "header": ["X-ECCUBE-KEY: "]
+                    "header": ["X-ECCUBE-KEY: gAs4im"]
                 }
             }
         }
