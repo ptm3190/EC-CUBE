@@ -124,15 +124,17 @@
                                 {% set positive_star = ProductReview.recommend_level %}
                                 {% set negative_star = 5 - positive_star %}
                                 <span class="recommend_level">
-                                            {{ stars.stars(positive_star, negative_star) }}
-                                        </span>
+                                    {{ stars.stars(positive_star, negative_star) }}
+                                </span>
                             </p>
-
                             <!--タイトル-->
                             <strong>{{ ProductReview.title }}</strong>
 
                             <!--レビューコメント-->
-                            <p>{{ ProductReview.comment|nl2br }}</p>
+                            <p>{{ ProductReview.comment|nl2br }}aaa</p>
+
+                            <!--ストアレビュー-->
+                            <p>{{ ProductReview.store_reviews|nl2br }}</p>
                         </li>
                     {% endfor %}
                 </ul>
