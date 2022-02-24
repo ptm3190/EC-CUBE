@@ -24,7 +24,7 @@ trait StoreReviewTrait
     /**
      * @var string
      *
-     * @ORM\Column(name="store_review", type="text")
+     * @ORM\Column(name="store_review", type="text", nullable=true)
      */
     private $store_review;
 
