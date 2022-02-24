@@ -9,6 +9,8 @@ node_modules
 /app/Plugin/*
 !/app/Plugin/ProductReview4
 !/app/Plugin/HogePlugin
+!/app/Plugin/StoreReview
+!/app/Plugin/MailMagazine4
 /app/PluginData/*
 !/app/PluginData/.gitkeep
 /app/template/*

@@ -11,11 +11,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Plugin\ProductReview4\Form\Type\Admin;
+namespace Plugin\StoreReview\Form\Type;
 
 use Eccube\Common\EccubeConfig;
 use Eccube\Form\Type\Master\SexType;
-use Plugin\ProductReview4\Entity\ProductReviewStatus;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -28,7 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Class ProductReviewType.
  * [商品レビュー]-[レビュー管理]用Form.
  */
-class ProductReviewType extends AbstractType
+class StoreReviewType extends AbstractType
 {
     /**
      * @var EccubeConfig
@@ -109,6 +108,16 @@ class ProductReviewType extends AbstractType
             ->add('comment', TextareaType::class, [
                 'constraints' => [
                     new Assert\NotBlank(),
+                    new Assert\Length(['max' => $config['eccube_ltext_len']]),
+                ],
+                'attr' => [
+                    'maxlength' => $config['eccube_ltext_len'],
+                ],
+            ])
+            // ⬇︎0216記述　addでショップレビューのデータを受け取りたい
+            ->add('store_reviews', TextareaType::class, [
+                'constraints' => [
+                    // new Assert\NotBlank(),
                     new Assert\Length(['max' => $config['eccube_ltext_len']]),
                 ],
                 'attr' => [

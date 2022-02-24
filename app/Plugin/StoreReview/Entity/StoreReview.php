@@ -11,7 +11,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Plugin\ProductReview4\Entity;
+namespace Plugin\StoreReview\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Eccube\Entity\AbstractEntity;
@@ -22,10 +22,10 @@ use Eccube\Entity\Product;
 /**
  * ProductReview
  *
- * @ORM\Table(name="plg_product_review")
- * @ORM\Entity(repositoryClass="Plugin\ProductReview4\Repository\ProductReviewRepository")
+ * @ORM\Table(name="plg_store_review")
+ * @ORM\Entity(repositoryClass="Plugin\StoreReview\Repository\StoreReviewRepository")
  */
-class ProductReview extends AbstractEntity
+class StoreReview extends AbstractEntity
 {
     /**
      * @var int
@@ -124,6 +124,14 @@ class ProductReview extends AbstractEntity
      * })
      */
     private $Status;
+
+    // // 0217記述⬇︎
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="store_reviews", type="text", nullable=true)
+     */
+    private $store_reviews;
 
     /**
      * Get id.
@@ -390,4 +398,30 @@ class ProductReview extends AbstractEntity
     {
         return $this->update_date;
     }
+
+    // 0217記述⬇︎　store_review
+    /**
+     * Get store_review.
+     *
+     * @return \ProductReview
+     */
+    public function getStoreReviews()
+    {
+        return $this->store_reviews;
+    }
+
+    /**
+     * Set store_reviews.
+     *
+     * @param string $store_reviews
+     *
+     * @return ProductReview
+     */
+    public function setStoreReviews($store_reviews)
+    {
+        $this->store_reviews = $store_reviews;
+
+        return $this;
+    }
+    // 0217↑記述ここまで
 }

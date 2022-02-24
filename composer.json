@@ -33,6 +33,7 @@
         "doctrine/migrations": "^1.8",
         "doctrine/orm": "^2.6",
         "easycorp/easy-log-handler": "^1.0",
+        "ec-cube/mailmagazine4": "^4.1",
         "ec-cube/plugin-installer": "^2.0",
         "ec-cube/productreview4": "^4.1",
         "egulias/email-validator": "^2.1",

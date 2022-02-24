@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c67abdb7d8a216aad0c66f633e6cddbf",
+    "content-hash": "d5648e7a555b820f30c5cb9a964abceb",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -2266,6 +2266,30 @@
             },
             "abandoned": true,
             "time": "2019-10-24T07:13:31+00:00"
+        },
+        {
+            "name": "ec-cube/mailmagazine4",
+            "version": "4.1.2",
+            "dist": {
+                "type": "tar",
+                "url": "https://package-api-c2.ec-cube.net/ec-cube/mailmagazine4/4.1.2/MailMagazine4-4.1.2.tgz"
+            },
+            "require": {
+                "ec-cube/plugin-installer": "~0.0.6 || ^2.0"
+            },
+            "type": "eccube-plugin",
+            "extra": {
+                "code": "MailMagazine4",
+                "id": 1760
+            },
+            "description": "メールマガジンプラグイン",
+            "transport-options": {
+                "http": {
+                    "header": [
+                        "X-ECCUBE-KEY: gAs4im"
+                    ]
+                }
+            }
         },
         {
             "name": "ec-cube/plugin-installer",
