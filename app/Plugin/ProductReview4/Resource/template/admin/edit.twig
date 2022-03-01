@@ -135,8 +135,8 @@
                                         <span>{{ '返信'|trans }}</span>
                                     </div>
                                     <div class="col">
-                                        {{ form_widget(form) }}
-                                        {{ form_errors(form) }}
+                                        {{ form_widget(form.store_review,  {'attr': {'rows': '6'}}) }}
+                                        {{ form_errors(form.store_review) }}
                                     </div>
                                 </div>
                                 {# ↑ #}

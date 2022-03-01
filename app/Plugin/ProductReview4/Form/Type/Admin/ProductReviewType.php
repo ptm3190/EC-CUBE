@@ -114,6 +114,17 @@ class ProductReviewType extends AbstractType
                 'attr' => [
                     'maxlength' => $config['eccube_ltext_len'],
                 ],
+            ])
+            // ⬇︎0216記述　addでショップレビューのデータを受け取りたい
+            ->add('store_review', TextareaType::class, [
+                'required' => false,
+                'constraints' => [
+                    // new Assert\NotBlank(),
+                    new Assert\Length(['max' => $config['eccube_ltext_len']]),
+                ],
+                'attr' => [
+                    'maxlength' => $config['eccube_ltext_len'],
+                ],
             ]);
     }
 }

@@ -51,4 +51,36 @@ trait StoreReviewTrait
 
         return $this;
     }
+
+    // ⬇︎0225記述　ProductReviewテーブルにmember_idを格納できるカラムを作成
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="member_id", type="integer", nullable=true)
+     */
+    private $member_id;
+
+    /**
+     * Get menber_id.
+     *
+     * @return string
+     */
+    public function getMemberId()
+    {
+        return $this->member_id;
+    }
+
+    /**
+     * Set member_id.
+     *
+     * @param string $menber_id
+     *
+     * @return ProductReview
+     */
+    public function setMemberId($member_id)
+    {
+        $this->member_id = $member_id;
+
+        return $this;
+    }
 }

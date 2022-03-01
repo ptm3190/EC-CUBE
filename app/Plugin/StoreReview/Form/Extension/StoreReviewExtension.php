@@ -12,6 +12,7 @@
  */
 
 namespace Plugin\StoreReview\Form\Extension;
+
 use Eccube\Form\Type\Master\SexType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -22,6 +23,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Plugin\ProductReview4\Form\Type\ProductReviewType;
 use Symfony\Component\Form\AbstractTypeExtension;
+use Eccube\Common\EccubeConfig;
 
 /**
  * Class StoeReviewType.
@@ -30,6 +32,21 @@ use Symfony\Component\Form\AbstractTypeExtension;
 class StoreReviewExtension extends AbstractTypeExtension
 {
     /**
+     * @var EccubeConfig
+     */
+    protected $eccubeConfig;
+
+    /**
+     * ProductReviewType constructor.
+     *
+     * @param EccubeConfig $eccubeConfig
+     */
+    public function __construct(EccubeConfig $eccubeConfig)
+    {
+        $this->eccubeConfig = $eccubeConfig;
+    }
+
+    /**
      * Build form.
      *
      * @param FormBuilderInterface $builder
@@ -37,7 +54,16 @@ class StoreReviewExtension extends AbstractTypeExtension
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('store_review', TextareaType::class);
+        $builder->add('store_review', TextareaType::class, [
+            'required' => false,
+            'constraints' => [
+                // new Assert\NotBlank(),
+                // new Assert\Length(['max' => $config['eccube_ltext_len']]),
+            ],
+            // 'attr' => [
+            //     'maxlength' => $config['eccube_ltext_len'],
+            // ],
+        ]);
     }
 
     /**
