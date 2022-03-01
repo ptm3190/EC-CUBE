@@ -1,0 +1,1 @@
+{"name":"ec-cube/store_review","version":"4.1.0","description":"商品レビュー返信機能","type":"eccube-plugin","require":{"ec-cube/plugin-installer":"~0.0.6 || ^2.0"},"extra":{"code":"StoreReview"}}

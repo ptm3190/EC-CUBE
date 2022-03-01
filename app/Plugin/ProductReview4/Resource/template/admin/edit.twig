@@ -130,10 +130,13 @@
                                     </div>
                                 </div>
                                 {# 0216⬇︎ショップレビュー用記述 #}
-                                <div class="shop-reviewzone">
-                                    <div class="shop-review">
-                                        {{ form_widget(form.store_reviews, {'attr': {'rows': '6'}}) }}
-                                        {{ form_errors(form.store_reviews) }}
+                                <div class="row mb-2">
+                                    <div class="col-3">
+                                        <span>{{ '返信'|trans }}</span>
+                                    </div>
+                                    <div class="col">
+                                        {{ form_widget(form.store_review,  {'attr': {'rows': '6'}}) }}
+                                        {{ form_errors(form.store_review) }}
                                     </div>
                                 </div>
                                 {# ↑ #}
@@ -143,7 +146,6 @@
                 </div>
             </div>
         </div>
-
         <div class="c-conversionArea">
             <div class="c-conversionArea__container">
                 <div class="row justify-content-between align-items-center">

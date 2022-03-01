@@ -16,6 +16,7 @@ namespace Plugin\ProductReview4;
 use Eccube\Entity\Product;
 use Eccube\Event\TemplateEvent;
 use Eccube\Repository\Master\ProductStatusRepository;
+use Eccube\Repository\MemberRepository;
 use Plugin\ProductReview4\Entity\ProductReviewStatus;
 use Plugin\ProductReview4\Repository\ProductReviewConfigRepository;
 use Plugin\ProductReview4\Repository\ProductReviewRepository;
@@ -39,6 +40,11 @@ class ProductReviewEvent implements EventSubscriberInterface
     protected $productReviewRepository;
 
     /**
+     * @var MemberRepository
+     */
+    protected $MemberRepository;
+
+    /**
      * ProductReview constructor.
      *
      * @param ProductReviewConfigRepository $productReviewConfigRepository
@@ -48,11 +54,13 @@ class ProductReviewEvent implements EventSubscriberInterface
     public function __construct(
         ProductReviewConfigRepository $productReviewConfigRepository,
         ProductStatusRepository $productStatusRepository,
-        ProductReviewRepository $productReviewRepository
+        ProductReviewRepository $productReviewRepository,
+        MemberRepository $memberRepository
     ) {
         $this->productReviewConfigRepository = $productReviewConfigRepository;
         $this->productStatusRepository = $productStatusRepository;
         $this->productReviewRepository = $productReviewRepository;
+        $this->memberRepository = $memberRepository;
     }
 
     /**
@@ -79,6 +87,14 @@ class ProductReviewEvent implements EventSubscriberInterface
 
         $ProductReviews = $this->productReviewRepository->findBy(['Status' => ProductReviewStatus::SHOW, 'Product' => $Product], ['id' => 'DESC'], $Config->getReviewMax());
 
+        // ⬇︎0301記述
+        foreach($ProductReviews as $ProductReview){
+            if(!is_null($ProductReview->getMemberId())){
+                $Member = $this->memberRepository->find($ProductReview->getMemberId());
+                $MemberNames[$ProductReview->getMemberId()] = $Member->getName();
+            }
+        }
+        // ↑
         $rate = $this->productReviewRepository->getAvgAll($Product);
         $avg = round($rate['recommend_avg']);
         $count = intval($rate['review_count']);
@@ -87,6 +103,8 @@ class ProductReviewEvent implements EventSubscriberInterface
         $parameters['ProductReviews'] = $ProductReviews;
         $parameters['ProductReviewAvg'] = $avg;
         $parameters['ProductReviewCount'] = $count;
+        // ⬇︎0301記述　新しく変数$MemberNamesを設定
+        $parameters['MemberNames'] = $MemberNames;
         $event->setParameters($parameters);
     }
 }

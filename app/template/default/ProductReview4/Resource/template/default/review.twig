@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 #}
-
 {% import _self as stars %}
 
 {# 星テキスト生成用マクロ #}
@@ -60,6 +59,14 @@
 
     #product_review_area .review_list .recommend_name {
         margin-left: 16px;
+    }
+
+    #product_review_area .review_list .store_review {
+        margin-left: 32px;
+        margin-top: 12px;
+        padding-left: 12px;
+        color: #999;
+        border-left: 2px solid #999;
     }
 
 </style>
@@ -132,9 +139,15 @@
 
                             <!--レビューコメント-->
                             <p>{{ ProductReview.comment|nl2br }}</p>
-
-                            <!--ストアレビュー-->
-                            <p>{{ ProductReview.store_reviews|nl2br }}</p>
+                        
+                            <!--ストアレビューコメント-->
+                            {# {% if ProductReview.store_review %} #}
+                            <div class="store_review">
+                                {# ⬇︎0301記述　member_idが1以上の時反映 #}
+                                <span class="text-info">{% if ProductReview.member_id > 0 %}{{ MemberNames[ProductReview.member_id] }}からの返信{% endif %}</span>
+                                <p>{{ ProductReview.store_review|nl2br }}</p>
+                            </div>
+                            {# {% endif %} #}
                         </li>
                     {% endfor %}
                 </ul>

@@ -30,6 +30,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Eccube\Request\Context;
+use Eccube\Common\EccubeConfig;
 
 /**
  * Class ProductReviewController admin.
@@ -66,12 +68,18 @@ class ProductReviewController extends AbstractController
         PageMaxRepository $pageMaxRepository,
         ProductReviewRepository $productReviewRepository,
         ProductReviewConfigRepository $productReviewConfigRepository,
-        CsvExportService $csvExportService
+        CsvExportService $csvExportService,
+        // ⬇︎0301記述
+        Context $requestContext,
+        EccubeConfig $eccubeConfig
     ) {
         $this->pageMaxRepository = $pageMaxRepository;
         $this->productReviewRepository = $productReviewRepository;
         $this->productReviewConfigRepository = $productReviewConfigRepository;
         $this->csvExportService = $csvExportService;
+        // ⬇︎0301記述
+        $this->requestContext = $requestContext;
+        $this->eccubeConfig = $eccubeConfig;
     }
 
     /**
@@ -190,6 +198,10 @@ class ProductReviewController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ProductReview = $form->getData();
+            
+            // ⬇︎0301記述
+            $user = $this->requestContext->getCurrentUser();
+            $ProductReview->setMemberId($user->getId());
             $this->entityManager->persist($ProductReview);
             $this->entityManager->flush($ProductReview);
 

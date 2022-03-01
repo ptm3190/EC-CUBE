@@ -112,6 +112,16 @@ class ProductReviewType extends AbstractType
                 'attr' => [
                     'maxlength' => $config['eccube_ltext_len'],
                 ],
+            ])
+            ->add('store_review', TextType::class, [
+                'label' => 'product_review.form.product_review.store_review',
+                'constraints' => [
+                    // new Assert\NotBlank(),
+                    new Assert\Length(['max' => $config['eccube_ltext_len']]),
+                ],
+                'attr' => [
+                    'maxlength' => $config['eccube_ltext_len'],
+                ],
             ]);
     }
 }

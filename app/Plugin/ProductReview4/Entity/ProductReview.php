@@ -125,14 +125,6 @@ class ProductReview extends AbstractEntity
      */
     private $Status;
 
-    // // 0217記述⬇︎
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="store_reviews", type="text", nullable=true)
-     */
-    private $store_reviews;
-
     /**
      * Get id.
      *
@@ -398,30 +390,4 @@ class ProductReview extends AbstractEntity
     {
         return $this->update_date;
     }
-
-    // 0217記述⬇︎　store_review
-    /**
-     * Get store_review.
-     *
-     * @return \ProductReview
-     */
-    public function getStoreReviews()
-    {
-        return $this->store_reviews;
-    }
-
-    /**
-     * Set store_reviews.
-     *
-     * @param string $store_reviews
-     *
-     * @return ProductReview
-     */
-    public function setStoreReviews($store_reviews)
-    {
-        $this->store_reviews = $store_reviews;
-
-        return $this;
-    }
-    // 0217↑記述ここまで
 }
